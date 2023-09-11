@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, inputChange } from '../redux/actions';
-import { selectTaskData } from '../redux/selector';
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, inputChange } from "../redux/actions";
+import { selectTaskData } from "../redux/selector";
 
 const Task = () => {
   const dispatch = useDispatch();
@@ -10,10 +10,10 @@ const Task = () => {
     if (!isEdit) {
       const task = { id: tasks.length + 1, text: taskValue.trim() };
       const newTasks = [...tasks, task];
-      if (task !== '') {
+      if (task !== "") {
         dispatch(addTodo(newTasks));
-        dispatch(inputChange(''));
-        localStorage.setItem('tasks',JSON.stringify(newTasks))
+        dispatch(inputChange(""));
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
       }
     } else {
       const tempTasks = tasks.map((task) => {
@@ -23,10 +23,10 @@ const Task = () => {
           return task;
         }
       });
-      if (taskValue !== '') {
+      if (taskValue !== "") {
         dispatch(addTodo(tempTasks));
-        localStorage.setItem('tasks',JSON.stringify(tempTasks))
-        dispatch(inputChange(''));
+        localStorage.setItem("tasks", JSON.stringify(tempTasks));
+        dispatch(inputChange(""));
       }
     }
   };
@@ -37,18 +37,18 @@ const Task = () => {
   };
 
   return (
-    <div className='task-component'>
-      <div className='add-task'>
+    <div className="task-component">
+      <div className="add-task">
         <input
-          type='text'
-          placeholder='Add task her....'
+          type="text"
+          placeholder="Add task her...."
           value={taskValue}
           onChange={handleChange}
-          className='taskInput'
+          className="taskInput"
         />
         <button onClick={addNewTask}>
-          {' '}
-          {isEdit ? 'Edit Task' : 'Add Task'}
+          {" "}
+          {isEdit ? "Edit Task" : "Add Task"}
         </button>
       </div>
     </div>

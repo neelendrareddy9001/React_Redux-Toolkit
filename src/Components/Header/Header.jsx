@@ -22,7 +22,7 @@ const WrapperContainer = styled.div`
   transform: translate(60%);
   max-width: 700px;
   margin-top: 40px;
-  height: 160px;
+  height: 140px;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
@@ -50,7 +50,7 @@ const Btn = styled.div`
 const Header = () => {
   return (
     <>
-      <Wrapper>
+      <Wrapper className="wrapper">
         <Title>Todo App</Title>
         <WrapperContainer>
           <StyledInput placeholder="Enter Title"></StyledInput>
