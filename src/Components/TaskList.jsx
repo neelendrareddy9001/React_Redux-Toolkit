@@ -1,13 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo } from "../Actions";
+import { deleteTodo,editTodo } from "../redux/actions";
+import { selectTaskData } from "../redux/selector";
 
 const TaskList = () => {
-    const tasks = useSelector((state) => state.tasks);
+    const {tasks} = useSelector(selectTaskData);
+
     const dispatch = useDispatch();
 
     const handleDelete = (id) => {
         dispatch(deleteTodo(id));
+    };
+    const handleEdit = (task) => {
+        dispatch(editTodo(task));
     };
 
     return (
@@ -15,7 +20,7 @@ const TaskList = () => {
             <div className='display-task'>
                 <h3>your tasks:</h3>
                 <ul className='tasks'>
-                    {tasks.map((task) => (
+                    {tasks && tasks?.map((task) => (
                         <li className='task' key={task.id}>
                             {task.text}
                             <button 
@@ -23,6 +28,12 @@ const TaskList = () => {
                                 onClick={() => handleDelete(task.id)}
                             >
                                 Delete
+                            </button>
+                            <button 
+                                className='delete-btn'
+                                onClick={() => handleEdit(task)}
+                            >
+                                Edit
                             </button>
                         </li>
                     ))}

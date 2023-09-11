@@ -1,32 +1,58 @@
-import {useRef} from 'react';
-import { useDispatch } from 'react-redux';
-import { addTodo } from '../Actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, inputChange } from '../redux/actions';
+import { selectTaskData } from '../redux/selector';
 
 const Task = () => {
-    const dispatch = useDispatch();
-    const inputRef = useRef(null);
+  const dispatch = useDispatch();
+  let { taskValue, tasks, isEdit, editedId } = useSelector(selectTaskData);
 
-    function addNewTask() {
-        const task = inputRef.current.value.trim();
-        if(task !== ""){
-            dispatch(addTodo(task));
-            inputRef.current.value = " ";
+  const addNewTask = () => {
+    if (!isEdit) {
+      const task = { id: tasks.length + 1, text: taskValue.trim() };
+      const newTasks = [...tasks, task];
+      if (task !== '') {
+        dispatch(addTodo(newTasks));
+        dispatch(inputChange(''));
+        localStorage.setItem('tasks',JSON.stringify(newTasks))
+      }
+    } else {
+      const tempTasks = tasks.map((task) => {
+        if (task.id === editedId) {
+          return { id: editedId, text: taskValue };
+        } else {
+          return task;
         }
+      });
+      if (taskValue !== '') {
+        dispatch(addTodo(tempTasks));
+        localStorage.setItem('tasks',JSON.stringify(tempTasks))
+        dispatch(inputChange(''));
+      }
     }
+  };
 
-    return (
-        <div className='task-component'>
-            <div className='add-task'>
-                <input
-                    type='text'
-                    placeholder='Add task her....'
-                    ref={inputRef}
-                    className='taskInput'
-                />
-                <button onClick={addNewTask}>Add Task</button>
-            </div>
-        </div>
-    )
-}
+  const handleChange = (e) => {
+    let payload = e.target.value;
+    dispatch(inputChange(payload));
+  };
+
+  return (
+    <div className='task-component'>
+      <div className='add-task'>
+        <input
+          type='text'
+          placeholder='Add task her....'
+          value={taskValue}
+          onChange={handleChange}
+          className='taskInput'
+        />
+        <button onClick={addNewTask}>
+          {' '}
+          {isEdit ? 'Edit Task' : 'Add Task'}
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Task;

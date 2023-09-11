@@ -1,16 +1,10 @@
-import './App.css';
-import Task from './Components/Task';
-import TaskList from './Components/TaskList';
+import "./App.css";
+import Header from "./Components/Header/Header";
+import Task from "./Components/Task";
+import TaskList from "./Components/TaskList";
 
 function App() {
-  
-
-  return (
-    <div className='App'>
-      <Task/>
-      <TaskList/>
-    </div>
-  )
+  return <Header />;
 }
 
-export default App
+export default App;

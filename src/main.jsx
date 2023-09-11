@@ -8,8 +8,8 @@ import store from './store.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provide store={store}>
+    <Provider store={store}>
       <App />
-    </Provide>
+    </Provider>
   </React.StrictMode>,
 )
