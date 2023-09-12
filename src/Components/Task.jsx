@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo, inputChange } from "../redux/actions";
 import { selectTaskData } from "../redux/selector";
 
+import "./Task.css";
+
 const Task = () => {
   const dispatch = useDispatch();
   let { taskValue, tasks, isEdit, editedId } = useSelector(selectTaskData);
@@ -37,8 +39,8 @@ const Task = () => {
   };
 
   return (
-    <div className="task-component">
-      <div className="add-task">
+    <div className="taskc_omponent">
+      <div className="add_task">
         <input
           type="text"
           placeholder="Add task her...."

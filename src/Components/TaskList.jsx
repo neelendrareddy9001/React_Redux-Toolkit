@@ -6,6 +6,8 @@ import { selectTaskData } from "../redux/selector";
 import ListItem from "@mui/material/ListItem";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
+import "./TaskList.css";
+
 const TaskList = () => {
   const { tasks } = useSelector(selectTaskData);
 

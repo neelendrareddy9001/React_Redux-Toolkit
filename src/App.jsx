@@ -4,7 +4,13 @@ import Task from "./Components/Task";
 import TaskList from "./Components/TaskList";
 
 function App() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <Task />
+      <TaskList />
+    </>
+  );
 }
 
 export default App;
