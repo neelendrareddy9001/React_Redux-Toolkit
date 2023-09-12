@@ -3,6 +3,7 @@ import { addTodo, inputChange } from "../redux/actions";
 import { selectTaskData } from "../redux/selector";
 
 import "./Task.css";
+import Modal from "./Modal";
 
 const Task = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,8 @@ const Task = () => {
         />
         <button onClick={addNewTask}>
           {" "}
-          {isEdit ? "Edit Task" : "Add Task"}
+          {/* {isEdit ? "Edit Task" : "Add Task"} */}
+          <Modal />
         </button>
       </div>
     </div>
