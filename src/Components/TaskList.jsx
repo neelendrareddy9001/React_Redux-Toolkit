@@ -6,6 +6,8 @@ import { selectTaskData } from "../redux/selector";
 import ListItem from "@mui/material/ListItem";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
+import { MdEdit, MdDelete } from "react-icons/md";
+
 import "./TaskList.css";
 
 const TaskList = () => {
@@ -27,21 +29,21 @@ const TaskList = () => {
           {tasks &&
             tasks?.map((task) => (
               <li className="task" key={task.id} style={{ listStyle: "none" }}>
-                <ListItem>
+                <ListItem className="m_icon">
                   <CheckCircleIcon
                     className="Check_icon"
                     style={{ color: "#7209b7" }}
                   />
                 </ListItem>
-                {task.text}
+                <span className="list_text">{task.text}</span>
                 <button
                   className="delete-btn"
                   onClick={() => handleDelete(task.id)}
                 >
-                  Delete
+                  <MdDelete className="md_icon" size={24} />
                 </button>
                 <button className="delete-btn" onClick={() => handleEdit(task)}>
-                  Edit
+                  <MdEdit className="md_icon" size={24} />
                 </button>
               </li>
             ))}
