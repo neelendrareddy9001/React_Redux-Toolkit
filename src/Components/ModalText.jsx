@@ -1,14 +1,12 @@
 import React from "react";
-
-import { useSelector } from "react-redux";
 import { selectTaskData } from "../redux/selector";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { render } from "react-dom";
 
-const Modal = () => {
-  let { isEdit } = useSelector(selectTaskData);
-  return <></>;
+const ModalText = () => {
+  return <div>Modal</div>;
 };
 
-export default Modal;
+export default ModalText;

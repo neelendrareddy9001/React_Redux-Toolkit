@@ -3,7 +3,7 @@ import { addTodo, inputChange } from "../redux/actions";
 import { selectTaskData } from "../redux/selector";
 
 import "./Task.css";
-import Modal from "./Modal";
+import Modal from "./ModalText";
 
 const Task = () => {
   const dispatch = useDispatch();
