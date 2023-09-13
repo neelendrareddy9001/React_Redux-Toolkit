@@ -51,8 +51,8 @@ const Task = () => {
         />
         <button onClick={addNewTask}>
           {" "}
-          {/* {isEdit ? "Edit Task" : "Add Task"} */}
-          <Modal />
+          {isEdit ? "Edit Task" : "Add Task"}
+          {/* <Modal /> */}
         </button>
       </div>
     </div>
